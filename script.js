@@ -1,7 +1,5 @@
 const container = document.querySelector('.container');
 
-const create = document.querySelector('.create');
-
 function createGrid(num) {
 	let width = 600 / num;
 	num *= num;
@@ -17,8 +15,10 @@ function createGrid(num) {
 	}
 }
 
+// Initialize first grid
 createGrid(10);
 
+// Remove grid before creating new one
 function removeGrid() {
 	grid.forEach((div) => {
 		container.removeChild(div);
@@ -34,7 +34,7 @@ sizeRange.addEventListener('change', () => {
 	let size = sizeRange.value;
 	removeGrid();
 	createGrid(size);
-	document.querySelector('label p').innerText = `${size} x ${size}`;
+	document.querySelector('label').innerText = `Size ${size} x ${size}`;
 	grid = document.querySelectorAll('.square');
 
 	if (activeColor === 'rainbow') rainbow();
@@ -43,10 +43,9 @@ sizeRange.addEventListener('change', () => {
 
 function black() {
 	grid.forEach((div) => {
-		div.addEventListener(
-			'mouseover',
-			() => (div.style.backgroundColor = '#111')
-		);
+		div.addEventListener('mouseover', () => {
+			div.style.backgroundColor = '#111';
+		});
 	});
 }
 
@@ -130,16 +129,18 @@ buttons.forEach((btn) => {
 		if (btn.classList.value.indexOf('black') !== -1) {
 			activeColor = 'black';
 			black();
+			toggleActive(btn);
 		}
 		if (btn.classList.value.indexOf('rainbow') !== -1) {
 			activeColor = 'rainbow';
 			rainbow();
+			toggleActive(btn);
 		}
 		if (btn.classList.value.indexOf('eraser') !== -1) {
 			activeColor = 'eraser';
 			eraser();
+			toggleActive(btn);
 		}
-
 		if (btn.classList.value.indexOf('clear') !== -1) {
 			grid.forEach((div) => {
 				div.style.backgroundColor = 'white';
@@ -147,3 +148,12 @@ buttons.forEach((btn) => {
 		}
 	});
 });
+
+function toggleActive(activeBtn) {
+	buttons.forEach((btn) => {
+		if (btn.classList.value.includes('active')) {
+			btn.classList.remove('active');
+		}
+	});
+	activeBtn.classList.add('active');
+}

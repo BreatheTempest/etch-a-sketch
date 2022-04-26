@@ -12,18 +12,17 @@
 		<h1>Etch-A-Sketch</h1>
 
 		<div class="controls">
-			<input
-				value="10"
-				type="range"
-				id="range"
-				name="grid-size"
-				min="2"
-				max="64"
-			/>
-			<label for="grid-size"
-				>Size
-				<p>10 x 10</p>
-			</label>
+			<div class="size-range">
+				<label for="grid-size">Size 10 x 10 </label>
+				<input
+					value="10"
+					type="range"
+					id="range"
+					name="grid-size"
+					min="2"
+					max="64"
+				/>
+			</div>
 			<button class="black">Black</button>
 			<button class="rainbow">Rainbow</button>
 			<button class="eraser">Eraser</button>
