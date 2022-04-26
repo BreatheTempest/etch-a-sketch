@@ -1,6 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
@@ -14,9 +15,9 @@ body {
 
 .container {
 	background-color: #222;
-	width: 300px;
-	height: 300px;
-	margin: 2rem;
+	width: 600px;
+	height: 600px;
+	margin: 1rem;
 	display: flex;
 	flex-wrap: wrap;
 	align-content: center;
@@ -29,12 +30,20 @@ h1 {
 }
 
 .square {
-	width: 10%;
-	height: 10%;
-	background-color: #111;
-	margin: 1%;
+	background-color: hsl(0, 100%, 100%);
+	color: #333;
+	border: 1px solid black;
 }
 
 .color {
-	background-color: aliceblue;
+	background-color: hsl(0, 0%, 0%);
+}
+
+.create {
+	padding: 1em;
+	border-radius: 50px;
+	border: none;
+	background-color: #222;
+	color: inherit;
+	cursor: pointer;
 }
