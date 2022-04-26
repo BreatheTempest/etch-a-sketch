@@ -25,6 +25,8 @@ function removeGrid() {
 	});
 }
 
+let activeColor = 'black';
+
 let grid = document.querySelectorAll('.square');
 
 const sizeRange = document.querySelector('#range');
@@ -34,16 +36,17 @@ sizeRange.addEventListener('change', () => {
 	createGrid(size);
 	document.querySelector('label').innerText = `Size ${size} x ${size}`;
 	grid = document.querySelectorAll('.square');
-	rainbow();
+
+	if (activeColor === 'rainbow') rainbow();
+	else black();
 });
 
 function black() {
 	grid.forEach((div) => {
-		div.addEventListener('mouseover', () => {
-			if (div.classList.value.indexOf('color' === -1)) {
-				div.classList.add('color');
-			}
-		});
+		div.addEventListener(
+			'mouseover',
+			() => (div.style.backgroundColor = '#111')
+		);
 	});
 }
 
@@ -109,4 +112,32 @@ function rainbow() {
 	});
 }
 
-rainbow();
+function eraser() {
+	grid.forEach((div) => {
+		div.addEventListener(
+			'mouseover',
+			() => (div.style.backgroundColor = 'white')
+		);
+	});
+}
+
+black();
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((btn) => {
+	btn.addEventListener('click', () => {
+		if (btn.classList.value.indexOf('black') !== -1) {
+			activeColor = 'black';
+			black();
+		}
+		if (btn.classList.value.indexOf('rainbow') !== -1) {
+			activeColor = 'rainbow';
+			rainbow();
+		}
+		if (btn.classList.value.indexOf('eraser') !== -1) {
+			activeColor = 'eraser';
+			eraser();
+		}
+	});
+});

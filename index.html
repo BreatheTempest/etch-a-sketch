@@ -10,15 +10,21 @@
 	</head>
 	<body>
 		<h1>Etch-A-Sketch</h1>
+
+		<div class="controls">
+			<input
+				value="10"
+				type="range"
+				id="range"
+				name="grid-size"
+				min="2"
+				max="60"
+			/>
+			<label for="grid-size">Size 10 x 10</label>
+			<button class="black">Black</button>
+			<button class="rainbow">Rainbow</button>
+			<button class="eraser">Eraser</button>
+		</div>
 		<div class="container"></div>
-		<input
-			value="10"
-			type="range"
-			id="range"
-			name="grid-size"
-			min="2"
-			max="60"
-		/>
-		<label for="grid-size">Size 10 x 10</label>
 	</body>
 </html>
