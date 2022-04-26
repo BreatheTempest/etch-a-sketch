@@ -34,7 +34,7 @@ sizeRange.addEventListener('change', () => {
 	let size = sizeRange.value;
 	removeGrid();
 	createGrid(size);
-	document.querySelector('label').innerText = `Size ${size} x ${size}`;
+	document.querySelector('label p').innerText = `${size} x ${size}`;
 	grid = document.querySelectorAll('.square');
 
 	if (activeColor === 'rainbow') rainbow();
@@ -138,6 +138,12 @@ buttons.forEach((btn) => {
 		if (btn.classList.value.indexOf('eraser') !== -1) {
 			activeColor = 'eraser';
 			eraser();
+		}
+
+		if (btn.classList.value.indexOf('clear') !== -1) {
+			grid.forEach((div) => {
+				div.style.backgroundColor = 'white';
+			});
 		}
 	});
 });
